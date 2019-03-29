@@ -1,5 +1,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("actions", tbl => {
+    tbl.increments();
+    tbl.string("description", 128).notNullable();
+    tbl.string("notes", 128).notNullable();
     tbl
       .integer("project_id")
       .notNullable()
@@ -8,9 +11,7 @@ exports.up = function(knex, Promise) {
       .inTable("projects")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
-    tbl.increments();
-    tbl.string("description", 128).notNullable();
-    tbl.string("notes", 128).notNullable();
+
     tbl.boolean("done").defaultTo(false);
   });
 };

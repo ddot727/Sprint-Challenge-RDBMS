@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex("table_name")
+  return knex("projects")
     .truncate()
     .then(function() {
       // Inserts seed entries
-      return knex("table_name").insert([
+      return knex("projects").insert([
         {
           name: "Sprint Challenge",
           description: "Weekly culminating project",
